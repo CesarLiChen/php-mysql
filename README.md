@@ -2,6 +2,9 @@
 This REAME will contain what I did to setup the Abyss X1 web server, PHP engine, and MySQL Server in the Linux distro Fedora 41.
 It will also try to document code snippets, and general PHP/MySQL usage.
 
+[Abyss setup](#abyss-x1-web-server)  
+[PHP setup](#php)
+
 ### Abyss X1 Web Server
 I pretty much to pieces from [Abyss' documentation](https://aprelium.com/data/doc/2/abyssws-linux-doc-html/index.html). Follow this if you don't really want to read what I wrote.
 
@@ -33,7 +36,9 @@ I pretty much to pieces from [Abyss' documentation](https://aprelium.com/data/do
 - You should see something like below:  
 ![abyss-local-url](https://github.com/user-attachments/assets/a45b4346-24e0-45d4-92a7-77516603f60c)
 
-### Installing PHP
+### PHP
+
+#### Installing PHP
 - In the terminal, `sudo dnf upgrade` first. It is good practice to have the packages up to date before installing anything new.
 - Now, `sudo dnf install php php-common`
 - Type `y` for yes when/if needed.
