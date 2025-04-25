@@ -32,3 +32,9 @@ I pretty much to pieces from [Abyss' documentation](https://aprelium.com/data/do
 - Finally, with your web browser, navigate to `http://127.0.0.1:8000` to see the Abyss Welcome page which tells us that it is working.
 - You should see something like below:  
 ![abyss-local-url](https://github.com/user-attachments/assets/a45b4346-24e0-45d4-92a7-77516603f60c)
+
+### Installing PHP
+- In the terminal, `sudo dnf upgrade` first. It is good practice to have the packages up to date before installing anything new.
+- Now, `sudo dnf install php php-common`
+- Type `y` for yes when/if needed.
+- To check if PHP is installed, do `php -v` in the terminal.
