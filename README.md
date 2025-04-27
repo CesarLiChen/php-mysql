@@ -3,8 +3,10 @@ This REAME will contain what I did to setup the Abyss X1 web server, PHP engine,
 It will also try to document code snippets, and general PHP/MySQL usage.
 
 [Abyss install and setup](#abyss-x1-web-server)  
-[PHP install](#php)  
-[Abyss and PHP together](#configuring-abyss-for-php)
+[PHP install](#php-setup)  
+[Abyss and PHP together](#configuring-abyss-for-php)  
+[Installing MySQL](#installing-mysql)  
+[Using MySQL Monitor/Client](#using-the-mysql-client)  
 
 ### Abyss X1 Web Server
 I pretty much put together pieces from [Abyss' documentation](https://aprelium.com/data/doc/2/abyssws-linux-doc-html/index.html) to install and setup Abyss. Follow this if you don't really want to read what I wrote.
@@ -39,7 +41,7 @@ I pretty much put together pieces from [Abyss' documentation](https://aprelium.c
 - You should see something like below:
 <img src="https://github.com/user-attachments/assets/a45b4346-24e0-45d4-92a7-77516603f60c" width=50% height=50%>
 
-### PHP
+### PHP setup
 
 #### Installing PHP
 - In the terminal, `sudo dnf upgrade` first. It is good practice to have the packages up to date before installing anything new.
@@ -80,3 +82,50 @@ I mainly followed [Abyss's documentation](https://aprelium.com/abyssws/php.html)
 <img src="https://github.com/user-attachments/assets/b05e4515-6a47-4425-8bbb-ce72d1135734" width=50% height=50%>
 
 - Congrats, Abyss is configured correctly to work with PHP!
+
+### Embeding PHP script
+```
+...
+</head>
+<body>
+  <?php
+  # The traditional message
+  echo '<h1>Hello World!!</h1> ;
+  ?>
+</body>
+</html>
+```
+### MySQL Setup and Usage
+
+#### Installing MySQL
+Followed [Fedora's documentation](https://docs.fedoraproject.org/en-US/quick-docs/installing-mysql-mariadb/) on the matter.
+- `sudo dnf upgrade`
+- `sudo dnf install community-mysql-server`
+  - There is a chance that mariadb could be installed for whatever. These two can't coexist together so one or the other must be removed.
+- Check if it is installed correctly by `mysql -V` in the terminal.
+- To start MySQL server: `systemctl start mysqld`
+- To check the status: `systemctl status mysqld`
+- Now you'll have to configure MySQL. Start by typing in `sudo mysql_secure_installation`. It should only be done the first time you use MySQL.
+  - It will guide you though a setup.
+  - It's fine to say yes to everything but I've found that I like to have the minimal **password validation** so I can put in simpler password when developing. Make sure to change the validation when it goes into production.
+
+#### Using the MySQL Client
+- To use MySQL do `mysql -u root -p`
+  - It will prompt you to type in your password (it will be invisible). Then your terminal will become the MySQL monitor like below:
+    - <img src="https://github.com/user-attachments/assets/108291bb-ad41-4072-aa9f-12542c218d78" width=50% height=50%>
+
+### MySQL and the SQL language
+- `CREATE DATABASE IF NOT EXISTS site_db;` *creates a database called **side_db***
+- `SHOW DATABASES;` *displays existing databases, there will be default databases created from installation*
+- Creating MySQL users:
+  - ````
+    CREATE USER IF NOT EXISTS 'username'@'hostname' 
+    IDENTIFIED WITH mysql_native_password BY 'password';
+    ````
+    - *the single quotation marks are not optional, e.g. 'katara'@'watergang' or 'userSecretPsw'*
+- Giving privileges
+  - ```
+    GRANT SELECT, INSERT, UPDATE ON site_db.*
+    TO 'katara'@'watergang';
+    ```
+- `SHOW GRANTS FOR 'katara'@'watergang';` to see and confirm their privileges.
