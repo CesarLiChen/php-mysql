@@ -129,3 +129,34 @@ Followed [Fedora's documentation](https://docs.fedoraproject.org/en-US/quick-doc
     TO 'katara'@'watergang';
     ```
 - `SHOW GRANTS FOR 'katara'@'watergang';` to see and confirm their privileges.
+
+### Connecting PHP and MySQL
+- Open you favourite text editor and type in the following:
+  - ```
+    <?php
+    
+    # Connect on 'watergang' for user 'katara'
+    # with psw 'elements' to db 'site_db'
+    
+    # Parameters are (host, user, psw, database)
+    $dbc = mysqli_connect('watergang', 'katara', 'elements', 'site_db')
+    OR die(mysqli_connect_error());
+    
+    # Set encoding to match PHP script encoding.
+    mysqli_set_charset($dbc, 'utf8');
+    ```
+- Save the file with the name **connect_db.php** in the parent directory of htdocs (i.e. home/user-name/Documents/abyssws) for security reasons.
+- Create a new file and type in the following:
+  - ```
+    <?php
+    # Incorporate MySQL connection script
+    require('../connect_db.php');
+    
+    # Will diplay connection information if attempt is successful.
+    if(mysqli_ping($dbc))
+    {echo 'MySQL Server' .mysqli_get_server_info($dbc).
+            'connected on '.mysqli_get_host_info($dbc);}
+    ```
+  - This time save the file in the htdocs directory with the name **require.php**
+- Now go to `http://localhost/8000/require.php` to see that it works.
+
