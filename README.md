@@ -7,6 +7,7 @@ It will also try to document code snippets, and general PHP/MySQL usage.
 [Abyss and PHP together](#configuring-abyss-for-php)  
 [Installing MySQL](#installing-mysql)  
 [Using MySQL Monitor/Client](#using-the-mysql-client)  
+[Connect PHP and MySQL](#connecting-php-and-mysql)  
 
 ### Abyss X1 Web Server
 I pretty much put together pieces from [Abyss' documentation](https://aprelium.com/data/doc/2/abyssws-linux-doc-html/index.html) to install and setup Abyss. Follow this if you don't really want to read what I wrote.
@@ -161,4 +162,4 @@ Followed [Fedora's documentation](https://docs.fedoraproject.org/en-US/quick-doc
     ```
   - This time save the file in the htdocs directory with the name **require.php**
 - Now go to `http://localhost/8000/require.php` to see that it works.
-
+  - It should display something similar to `MySQL Server 8.0.41 connected on Localhost via UNIX socket` in the web browser.
