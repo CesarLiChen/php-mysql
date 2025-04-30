@@ -44,9 +44,11 @@ I pretty much put together pieces from [Abyss' documentation](https://aprelium.c
 ### PHP setup
 
 #### Installing PHP
+I followed [PHP's documentation](https://www.php.net/manual/en/install.unix.dnf.php) on the matter. Specifically for distros that use DNF package manager which is the case for Fedora.
 - In the terminal, `sudo dnf upgrade` first. It is good practice to have the packages up to date before installing anything new.
 - Now, `sudo dnf install php php-common`
 - Type `y` for yes when/if needed.
+- `sudo dnf install php-mysqlnd` to install utilities for connecting PHP and MySQL.
 - To check if PHP is installed, do `php -v` in the terminal.
 
 #### Configuring Abyss for PHP
