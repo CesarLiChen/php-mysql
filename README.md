@@ -124,8 +124,14 @@ Followed [Fedora's documentation](https://docs.fedoraproject.org/en-US/quick-doc
 - Creating MySQL users:
   - ````
     CREATE USER IF NOT EXISTS 'username'@'hostname' 
-    IDENTIFIED WITH mysql_native_password BY 'password';
+    IDENTIFIED WITH caching_sha2_password BY 'password';
+    ````  
+    or without any auth plugin  
+  - ````
+    CREATE USER IF NOT EXISTS 'username'@'hostname' 
+    IDENTIFIED BY 'password';
     ````
+  - Since MySQL 8.4 mysql_native_password is disabled by default so don't do: `IDENTIFIED WITH mysql_native_password BY 'password';`
     - *the single quotation marks are not optional, e.g. 'katara'@'watergang' or 'userSecretPsw'*
 - Giving privileges
   - ```
