@@ -3,7 +3,11 @@ This REAME will contain what I did to setup the Abyss X1 web server, PHP engine,
 It will also try to document code snippets, and general PHP/MySQL usage.
 
 [Abyss install and setup](#abyss-x1-web-server)  
-[PHP install](#php-setup)  
+[PHP Setup](#php-setup)  
+&emsp;[Installing PHP](#installing-php)  
+&emsp;[Configuring Abyss for PHP](#configuring-abyss-for-php)  
+&emsp;[Testing Abyss config works](#testing-the-configuration-worked-correctly)  
+&emsp;[Making PHP display errors](#making-php-display-errors)  
 [Abyss and PHP together](#configuring-abyss-for-php)  
 [Installing MySQL](#installing-mysql)  
 [Using MySQL Monitor/Client](#using-the-mysql-client)  
@@ -86,6 +90,12 @@ I mainly followed [Abyss's documentation](https://aprelium.com/abyssws/php.html)
 <img src="https://github.com/user-attachments/assets/b05e4515-6a47-4425-8bbb-ce72d1135734" width=50% height=50%>
 
 - Congrats, Abyss is configured correctly to work with PHP!
+
+### Making PHP display errors
+In my setup, PHP by default disables the display of errors. This makes the browser show an error 500 instead of what is actually wrong.  
+I'm going to enable it while in development but **Remember to disable it when in production!**  
+- Change `display_errors = Off` to `display_errors = On` in the `php.ini` file.
+  - For me it was located in `/etc/php.ini`.
 
 ### Embeding PHP script
 ```
