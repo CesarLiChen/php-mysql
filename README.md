@@ -91,7 +91,7 @@ I mainly followed [Abyss's documentation](https://aprelium.com/abyssws/php.html)
 
 - Congrats, Abyss is configured correctly to work with PHP!
 
-### Making PHP display errors
+#### Making PHP display errors
 In my setup, PHP by default disables the display of errors. This makes the browser show an error 500 instead of what is actually wrong.  
 I'm going to enable it while in development but **Remember to disable it when in production!**  
 - Change `display_errors = Off` to `display_errors = On` in the `php.ini` file.
